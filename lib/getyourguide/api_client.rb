@@ -45,7 +45,7 @@ module GetYourGuide
         request_url += "&#{key}=#{@options[key]}"
       end
 
-      request_url
+      URI::escape request_url
     end
 
     def return_xml_or_raise_error(xml)
