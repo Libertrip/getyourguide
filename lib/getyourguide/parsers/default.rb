@@ -39,14 +39,25 @@ module GetYourGuide
         categories
       end
 
-      def get_pictures_list(product_xml)
+      def get_pictures_list(pictures_xml)
         pictures = []
 
-        product_xml.xpath('pictures').children.children.each do |picture|
-          pictures << picture.inner_text if picture.inner_text != ''
+        pictures_xml.xpath('pictures').children.children.each do |picture|
+          unless picture.inner_text == ''
+            picture_attributes = {
+              :ssl => to_boolean(picture.attr('ssl')),
+              :url => picture.inner_text
+            }
+
+            pictures << GetYourGuide::Models::Image.new(picture_attributes)
+          end
         end
 
         pictures
+      end
+
+      def to_boolean(input)
+        input == 'true'
       end
 
       def get_indivative_price(product_xml)
