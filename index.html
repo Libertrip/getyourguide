@@ -1,36 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>GetYourGuide by Libertrip</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <title>GetYourGuide by Libertrip</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>GetYourGuide</h1>
-        <p>A simple ruby client for Getyourguide partner XML API</p>
+    <div id="container">
+      <div class="inner">
 
-        <p class="view"><a href="https://github.com/Libertrip/getyourguide">View the Project on GitHub <small>Libertrip/getyourguide</small></a></p>
+        <header>
+          <h1>GetYourGuide</h1>
+          <h2>A simple ruby client for Getyourguide partner XML API</h2>
+        </header>
 
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Libertrip/getyourguide/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/Libertrip/getyourguide/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/Libertrip/getyourguide" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
-        <ul>
-          <li><a href="https://github.com/Libertrip/getyourguide/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/Libertrip/getyourguide/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/Libertrip/getyourguide">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p><img src="http://www.creative-city-berlin.de/uploads/institutions/getyourguide_deutschland_gmbh/avatar/20120202120023.png" alt="GetYourGuide logo"></p>
+        <hr>
 
-<p>Welcome to the getyourguide Wiki where you'll find lots of additional information about getyourguide and answers to the most frequently asked questions.</p>
+        <section id="main_content">
+          <p><img src="http://www.creative-city-berlin.de/uploads/institutions/getyourguide_deutschland_gmbh/avatar/20120202120023.png" alt="GetYourGuide logo"></p>
+
+<h1>
+<a id="wiki-summary" class="anchor" href="#wiki-summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wiki summary</h1>
 
 <ul>
 <li>
@@ -47,13 +51,64 @@
 <li><p><a href="https://github.com/Libertrip/getyourguide/wiki/Gem-models">Gem's models</a></p></li>
 <li><a href="https://github.com/Libertrip/getyourguide/wiki/API-optional-parameters">Optional parameters</a></li>
 </ul>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/Libertrip">Libertrip</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s1"><span class="pl-pds">'</span>getyourguide<span class="pl-pds">'</span></span></pre></div>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install getyourguide
+</code></pre>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<h2>
+<a id="i-the-easy-way" class="anchor" href="#i-the-easy-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>I. The easy way</h2>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>getyourguide<span class="pl-pds">'</span></span>
+
+<span class="pl-c"># required</span>
+partner_id        <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>XXXXXXXXXX<span class="pl-pds">'</span></span>
+options           <span class="pl-k">=</span> {
+  <span class="pl-c1">:q</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>product_list<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">:where</span> =&gt; <span class="pl-s1"><span class="pl-pds">'</span>Rome<span class="pl-pds">'</span></span>
+}
+
+<span class="pl-c"># optional (default is set to EN)</span>
+language          <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>fr<span class="pl-pds">'</span></span>
+
+api             <span class="pl-k">=</span> <span class="pl-s3">GetYourGuide</span>::<span class="pl-s3">ApiClient</span>.<span class="pl-k">new</span>(partner_id, language)
+parsed_activities <span class="pl-k">=</span> api.call_and_parse(options)</pre></div>
+
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<ol>
+<li>Fork it ( <a href="https://github.com/Libertrip/getyourguide/fork">https://github.com/Libertrip/getyourguide/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+        </section>
+
+        <footer>
+          GetYourGuide is maintained by <a href="https://github.com/Libertrip">Libertrip</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
   </body>
 </html>
