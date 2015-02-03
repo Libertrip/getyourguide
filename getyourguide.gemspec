@@ -21,7 +21,10 @@ Gem::Specification.new do |spec|
   spec.require_paths          = ["lib"]
 
   spec.add_development_dependency 'bundler', '~> 1.7'
+  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rspec', '~> 3.1.0'
+
   spec.add_runtime_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
   spec.add_runtime_dependency 'httpclient', '~> 2.3', '>= 2.3.1'
 end
