@@ -1,5 +1,7 @@
 ![GetYourGuide logo](http://www.creative-city-berlin.de/uploads/institutions/getyourguide_deutschland_gmbh/avatar/20120202120023.png)
 
+[![Coverage Status](https://coveralls.io/repos/Libertrip/getyourguide/badge.svg)](https://coveralls.io/r/Libertrip/getyourguide)
+
 Read the [gem's wiki](https://github.com/Libertrip/getyourguide/wiki) for more features!
 
 ## Installation
