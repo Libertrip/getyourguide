@@ -1,6 +1,6 @@
 ![GetYourGuide logo](http://www.creative-city-berlin.de/uploads/institutions/getyourguide_deutschland_gmbh/avatar/20120202120023.png)
 
-[![Gem Version](https://badge.fury.io/rb/getyourguide.svg)](http://badge.fury.io/rb/getyourguide) [![Build Status](https://travis-ci.org/Libertrip/getyourguide.svg)](https://travis-ci.org/Libertrip/getyourguide) [![Code Climate](https://codeclimate.com/github/Libertrip/getyourguide/badges/gpa.svg)](https://codeclimate.com/github/Libertrip/getyourguide)
+[![Gem Version](https://badge.fury.io/rb/getyourguide.svg)](http://badge.fury.io/rb/getyourguide) [![Build Status](https://travis-ci.org/Libertrip/getyourguide.svg)](https://travis-ci.org/Libertrip/getyourguide) [![Code Climate](https://codeclimate.com/github/Libertrip/getyourguide/badges/gpa.svg)](https://codeclimate.com/github/Libertrip/getyourguide) [![Coverage Status](https://coveralls.io/repos/Libertrip/getyourguide/badge.svg?branch=master)](https://coveralls.io/r/Libertrip/getyourguide?branch=master)
 
 Read the [gem's wiki](https://github.com/Libertrip/getyourguide/wiki) for more features!
 
