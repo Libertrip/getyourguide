@@ -16,15 +16,13 @@ module GetYourGuide
       end
 
       def parse_simgle_category(category_xml)
-        category_attributes = {
+        create_model('TopCategory', {
           :provider_id => category_xml.attr('id').to_i,
           :name => category_xml.xpath('name').children.inner_text,
           :link => category_xml.xpath('link').children.inner_text,
           :picture => category_xml.xpath('picture').children.inner_text,
           :rating => category_xml.xpath('rating').children.inner_text.to_i
-        }
-
-        GetYourGuide::Models::TopCategory.new(category_attributes)
+        })
       end
     end
   end

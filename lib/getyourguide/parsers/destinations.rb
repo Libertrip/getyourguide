@@ -23,12 +23,16 @@ module GetYourGuide
           :destination_type => destination_xml.attr('type').to_s
         }
 
+        add_unlocode_and_iata destination_xml, destination_attributes
+
+        create_model('Destination', destination_attributes)
+      end
+
+      def add_unlocode_and_iata(destination_xml, destination_attributes)
         if destination_xml.xpath('.//alias').children.size > 0
           destination_attributes[:unlocode] = destination_xml.xpath('.//alias').children.first.inner_text
           destination_attributes[:iata]     = destination_xml.xpath('.//alias').children.last.inner_text
         end
-
-        GetYourGuide::Models::Destination.new(destination_attributes)
       end
     end
   end
