@@ -16,12 +16,10 @@ module GetYourGuide
       end
 
       def parse_simgle_category(category_xml)
-        category_attributes = {
+        create_model('Category', {
           :provider_id => category_xml.attr('id').to_i,
           :name => category_xml.xpath('name').children.inner_text
-        }
-
-        GetYourGuide::Models::Category.new(category_attributes)
+        })
       end
     end
   end

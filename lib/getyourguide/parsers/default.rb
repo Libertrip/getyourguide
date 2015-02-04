@@ -11,14 +11,12 @@ module GetYourGuide
         locations = []
 
         product_xml.xpath('destination').children.xpath('location').each do |location|
-          location_attributes = {
+          locations << create_model('Location', {
             :provider_id => location.attr('id').to_i,
             :name => location.inner_text,
             :country => location.attr('country'),
             :start_location => !location.attr('start_location').nil?
-          }
-
-          locations << GetYourGuide::Models::Location.new(location_attributes)
+          })
         end
 
         locations
@@ -28,12 +26,10 @@ module GetYourGuide
         categories = []
 
         product_xml.xpath('categories').children.each do |category|
-          category_attributes = {
+          categories << create_model('Category', {
             :provider_id => category.attr('id').to_i,
             :name => category.inner_text
-          }
-
-          categories << GetYourGuide::Models::Category.new(category_attributes)
+          })
         end
 
         categories
@@ -44,16 +40,18 @@ module GetYourGuide
 
         pictures_xml.xpath('pictures').children.children.each do |picture|
           unless picture.inner_text == ''
-            picture_attributes = {
+            pictures << create_model('Image', {
               :ssl => to_boolean(picture.attr('ssl')),
               :url => picture.inner_text
-            }
-
-            pictures << GetYourGuide::Models::Image.new(picture_attributes)
+            })
           end
         end
 
         pictures
+      end
+
+      def create_model(model_name, attributes)
+        Object.const_get("GetYourGuide::Models::#{model_name}").new attributes
       end
 
       def to_boolean(input)

@@ -16,14 +16,12 @@ module GetYourGuide
       end
 
       def parse_simgle_image_format(image_format_xml)
-        image_format_attributes = {
+        create_model('ImageFormat', {
           :provider_id => image_format_xml.attr('id').to_i,
           :width => image_format_xml.xpath('width').children.inner_text.to_i,
           :height => image_format_xml.xpath('height').children.inner_text.to_i,
           :comment => image_format_xml.xpath('comment').children.inner_text
-        }
-
-        GetYourGuide::Models::ImageFormat.new(image_format_attributes)
+        })
       end
     end
   end
